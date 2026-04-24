@@ -1,0 +1,23 @@
+﻿using EF01.Model;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EF01
+{
+    public class AppDbContext : DbContext
+    {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=\\\\.\\pipe\\MSSQL$SQLEXPRESS\\sql\\query;Database=BookStore;Trusted_Connection=True;TrustServerCertificate=True");
+        }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+
+    }
+}
